@@ -54,7 +54,7 @@ where r.id = cl.id and
 
 -- select all projects (Chloe)
 select *
-from Project_MaterialType p;
+from Project_MaterialType;
 
 -- select Project of one lab INPUT: LAB ID (Chloe)
 select *
@@ -71,3 +71,47 @@ from Supervises_WorksOn;
 select *
 from Supervises_WorksOn sw
 where sw.projectName = projectName_input;
+
+-- Naitong's comment: I think a more reasonable query would be the project and pi pairs.
+-- The query that gets all researchers or the PI given a project is covered already.
+
+-- select all project name and pi pairs
+select sw.projectName, cl.name
+from Supervises_WorksOn sw, Contains_LabMember cl
+where sw.piid = cl.id;
+
+-- Select all Assigned_Collaborators
+select *
+from Assigned_Collaborators;
+
+-- Select assigned_collabs for one project INPUT: PROJECT NAME
+Select aci.name, aci.education
+From Assigned_Collaborators_Id aci, Name_Education_ProjectName nep
+Where aci.name = nep.name and
+	nep.projectName = projectName_input;
+
+-- Select all booking records given project name
+-- Would it be of much help if we show all booking records for 
+-- all projects a researcher is working on? Redundancy of project names.
+-- I added a project name input. This could be a part of the project info panel.
+Select *
+from Takes_Booking
+where projectName = projectName_input;
+
+-- Select all Makes_Booking Tables
+-- I added project name input
+Select *
+from Makes_Booking
+where projectName = projectName_input;
+
+-- Select makes_booking of a particular takes_booking INPUT: PROJECT NAME + PARTICIPANT NUMBER
+-- Essentially identifying which lab manager made the booking?
+Select *
+from Makes_Booking
+where projectName = projectName_input and
+    participantNumber =participantNumber_input;
+
+-- Update project name
+Update Project_MaterialType
+set name = new_projectName_input
+where name = toBeChanged_projectName_input;
