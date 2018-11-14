@@ -3,6 +3,7 @@
 --     The first query returns all project names that the specific collaborator is involved in
 --     We could turn that into a dropdown menu and take the project that they select as the input project name
 --     Then with the project name input, we return the relevant information
+--     Still liking the idea of having a panel for project info. This could be one panel and we feed project name to it
 
 -- getting project names
 Select projectName 
