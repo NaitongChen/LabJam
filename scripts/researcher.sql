@@ -57,9 +57,17 @@ select *
 from Project_MaterialType p;
 
 -- select Project of one lab INPUT: LAB ID (Chloe)
-
 select *
 from Project_MaterialType p,Supervises_WorksOn sw,Contains_LabMember cl
 where p.name = sw.projectName and
         sw.piid = cl.id and 
         cl.labId = labId_input;
+
+-- select all Supervises_WorksOn (Chloe)
+select *
+from Supervises_WorksOn;
+
+-- Select Supervises_WorksOn for one project INPUT: PROJECT NAME (Chloe)
+select *
+from Supervises_WorksOn sw
+where sw.projectName = projectName_input;
