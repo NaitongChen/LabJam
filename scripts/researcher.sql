@@ -5,6 +5,7 @@
 --     When they click on a lab, we enter lab profile panel.
 --     This is where we display all lab specific info (pi, researchers, projects, etc.)
 --     Clicking on a project will take user to the project info panel described in the collaborator sql file.
+--     A lot of the queries can be modified very slightly to show counts too, which could be good polishment(?) to UI
 
 -- getting all lab names and fields
 Select *
