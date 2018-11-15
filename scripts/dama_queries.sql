@@ -1,12 +1,12 @@
 -- untested fancy queries claimed from the google doc
 
--- query list of available Subjects with requested dateParticipated, startTime and Booking length: ONLY LAB MANAGERS
+-- query list of available Subjects with requested dateParticipated, startTime and Booking length - times can't overlap with existing bookings and need to be within established working hours: ONLY LAB MANAGERS
 select *
 from Subjects s
 where availability = 'Y' AND s.id NOT IN (select p.id
                                          from Participates p, Takes_Booking b
                                          where b.projectName = projectName_input AND p.dateParticipated = dateParticipated_input AND (startTime_input <= p.startTime <= (startTime_input + b.length))
-                                         );
+                                         ) AND startTime_input + length_input <= 1800;
                                          
 -- get how much funding is left in a project after materials are purchased (assuming we only purchase once, at the start of the project)
 (TOTAL_GRANT_MONEY - select m.materialPrice
