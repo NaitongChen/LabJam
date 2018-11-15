@@ -102,6 +102,7 @@ CREATE TABLE Participates (
 	projectName CHAR(20),	
 	participantNumber INTEGER,
 	dateParticipated DATE,
+	startTime INTEGER,
 	PRIMARY KEY (sid, projectName, participantNumber),
 	FOREIGN KEY (sid) REFERENCES Subject(id),	
 	FOREIGN KEY (projectName, participantNumber) REFERENCES Takes_Booking(projectName, participantNumber));
