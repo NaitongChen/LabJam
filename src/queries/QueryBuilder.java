@@ -20,4 +20,11 @@ public class QueryBuilder {
 	public static void setPIID(String piID) {
 		PIID = piID;
 	}
+	
+	public static void reset() {
+		collaboratorID = null;
+		researcherID = null;
+		labManagerID = null;
+		PIID = null;
+	}
 }

@@ -1,25 +1,22 @@
 package panels;
 
 import java.awt.CardLayout;
-import java.awt.event.ComponentEvent;
-import java.awt.event.ComponentListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.Connection;
 
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import queries.QueryBuilder;
 
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+public class LabManagerMainPanel extends JPanel {
 
-public class ResearcherMainPanel extends JPanel {
-	
 	/**
 	 * Create the panel.
 	 */
-	public ResearcherMainPanel(CardLayout cl, JPanel mainPanel, Connection con) {
+	public LabManagerMainPanel(CardLayout cl, JPanel mainPanel, Connection con) {
 		setLayout(null);
 		
 		JButton btnSeeMyProjects = new JButton("See my Projects");
@@ -41,4 +38,5 @@ public class ResearcherMainPanel extends JPanel {
 		btnLogout.setBounds(70, 161, 115, 29);
 		add(btnLogout);
 	}
+
 }

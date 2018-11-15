@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 import panels.CollaboratorMainPanel;
+import panels.Constant;
 import panels.LogIn;
 import panels.ResearcherMainPanel;
 import panels.Tab1;
@@ -28,20 +29,18 @@ public class LabJam {
 		Tab1 tab1 = new Tab1(cl, mainPanel, con);
 		Tab2 tab2 = new Tab2(cl, mainPanel, con);
 		LogIn login = new LogIn(cl, mainPanel,con);
-		CollaboratorMainPanel collaboratorMainPanel = new CollaboratorMainPanel(cl, mainPanel, con);
-		ResearcherMainPanel researcherMainPanel = new ResearcherMainPanel(cl, mainPanel, con);
 
 		mainPanel.add(tab1, "1");
 		mainPanel.add(tab2, "2");
-		mainPanel.add(login, "3");
-		mainPanel.add(collaboratorMainPanel, "4");
+		mainPanel.add(login, Constant.LOGIN);
 		
 		frame.add(mainPanel);
-		frame.setPreferredSize(new Dimension(400, 400));
+		frame.setPreferredSize(new Dimension(450, 600));
+		frame.setResizable(false);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.pack();
 		frame.setVisible(true);
-		cl.show(mainPanel, "3");
+		cl.show(mainPanel, Constant.LOGIN);
 	}
 	
 	public static void main(String[] args) {
