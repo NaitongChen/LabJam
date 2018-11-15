@@ -30,7 +30,7 @@ where status = "applied";
 -- see all grants for a given project
 select * 
 from Fund_ApprovedGrant
-where projectName = projectName_input
+where projectName = projectName_input;
 
 -- insert subjects
 insert into Subjects (id, name, availability)
@@ -62,7 +62,7 @@ values (sid_input, projectName_input, participantNumber_input, dateParticipated_
 
 -- insert into makes_booking - projName and partNumber should come from the query above ^^ lmid should be lmid of Lab Manager that ran the query above ^^
 insert into Makes_Booking (projectName, participantNumber, lmid)
-values (projectName_input, participantNumber_input, lmid)
+values (projectName_input, participantNumber_input, lmid);
 
 -- update booking - only length and participantTestCondition are updateable
 update Takes_Booking
