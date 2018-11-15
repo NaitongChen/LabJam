@@ -46,9 +46,12 @@ update Subjects
 set availability - availability_input
 where id = id_input;
 
--- insert collaborators ** come back to this
+-- insert collaborators - need to add to assigned_collaborators AND name_education_projectname
 insert into Assigned_Collaborators (id, name, education)
 values (id_input, name_input, education_input);
+
+insert into Name_Education_ProjectName (name, education, projectName)
+values (name_input, education_input, projectName_input);
 
 -- insert bookings (need a project associated w/ them) - whenever a booking is inserted, we ALSO need to run a separate query to add to makes_booking
 insert into Takes_Booking (projectName, participantNumber, length, participantTestCondition)
