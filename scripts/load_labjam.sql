@@ -408,47 +408,47 @@ insert into Subject values
 ('0020','Chris Baker','Y');
 
 insert into Takes_Booking values
-('post-voldemort trauma',1,1,'Control Group');
+('post-voldemort trauma',1,100,'Control Group');
 insert into Takes_Booking values
-('post-voldemort trauma',2,1,'Control Group');
+('post-voldemort trauma',2,100,'Control Group');
 insert into Takes_Booking values
-('post-voldemort trauma',3,1,'Experimental Group');
+('post-voldemort trauma',3,100,'Experimental Group');
 insert into Takes_Booking values
-('post-voldemort trauma',4,1,'Experimental Group');
+('post-voldemort trauma',4,100,'Experimental Group');
 insert into Takes_Booking values
-('Conversations with Merpeople',1,1,'Control Gorup');
+('Conversations with Merpeople',1,200,'Control Group');
 insert into Takes_Booking values
-('Conversations with Merpeople',2,1,'Control Gorup');
+('Conversations with Merpeople',2,200,'Control Group');
 insert into Takes_Booking values
-('Conversations with Merpeople',3,1,'Experimental Group');
+('Conversations with Merpeople',3,200,'Experimental Group');
 insert into Takes_Booking values
-('Conversations with Merpeople',4,1,'Experimental Group');
+('Conversations with Merpeople',4,200,'Experimental Group');
 insert into Takes_Booking values
-('De-depress Demontors',1,1,'Control Gorup');
+('De-depress Demontors',1,100,'Control Group');
 insert into Takes_Booking values
-('De-depress Demontors',2,1,'Experimental Group');
+('De-depress Demontors',2,100,'Experimental Group');
 
 
 insert into Participates values
-('0011','post-voldemort trauma',1,TO_DATE('13/11/2018', 'DD/MM/YYYY'));
+('0011','post-voldemort trauma',1,TO_DATE('13/11/2018', 'DD/MM/YYYY'), 0900);
 insert into Participates values
-('0012','post-voldemort trauma',2,TO_DATE('10/11/2018', 'DD/MM/YYYY'));
+('0012','post-voldemort trauma',2,TO_DATE('10/11/2018', 'DD/MM/YYYY'), 1000);
 insert into Participates values
-('0013','post-voldemort trauma',3,TO_DATE('11/11/2018', 'DD/MM/YYYY'));
+('0013','post-voldemort trauma',3,TO_DATE('11/11/2018', 'DD/MM/YYYY'), 1200);
 insert into Participates values
-('0014','post-voldemort trauma',4,TO_DATE('20/10/2018', 'DD/MM/YYYY'));
+('0014','post-voldemort trauma',4,TO_DATE('20/10/2018', 'DD/MM/YYYY'), 1500);
 insert into Participates values
-('0015','Conversations with Merpeople',1,TO_DATE('01/10/2018', 'DD/MM/YYYY'));
+('0015','Conversations with Merpeople',1,TO_DATE('01/10/2018', 'DD/MM/YYYY'), 0700);
 insert into Participates values
-('0016','Conversations with Merpeople',2,TO_DATE('02/10/2018', 'DD/MM/YYYY'));
+('0016','Conversations with Merpeople',2,TO_DATE('02/10/2018', 'DD/MM/YYYY'), 1030);
 insert into Participates values
-('0017','Conversations with Merpeople',3,TO_DATE('03/10/2018', 'DD/MM/YYYY'));
+('0017','Conversations with Merpeople',3,TO_DATE('03/10/2018', 'DD/MM/YYYY'), 1230);
 insert into Participates values
-('0018','Conversations with Merpeople',4,TO_DATE('04/10/2018', 'DD/MM/YYYY'));
+('0018','Conversations with Merpeople',4,TO_DATE('04/10/2018', 'DD/MM/YYYY'), 1600);
 insert into Participates values
-('0019','De-depress Demontors',1,TO_DATE('05/10/2018', 'DD/MM/YYYY'));
+('0019','De-depress Demontors',1,TO_DATE('05/10/2018', 'DD/MM/YYYY'), 1145);
 insert into Participates values
-('0020','De-depress Demontors',2,TO_DATE('06/10/2018', 'DD/MM/YYYY'));
+('0020','De-depress Demontors',2,TO_DATE('06/10/2018', 'DD/MM/YYYY'), 1520);
 
 insert into Makes_Booking values
 ('post-voldemort trauma',1,'8908');
