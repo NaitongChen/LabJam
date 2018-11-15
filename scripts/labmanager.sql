@@ -53,9 +53,12 @@ values (id_input, name_input, education_input);
 insert into Name_Education_ProjectName (name, education, projectName)
 values (name_input, education_input, projectName_input);
 
--- insert bookings (need a project associated w/ them) - whenever a booking is inserted, we ALSO need to run a separate query to add to makes_booking
+-- insert bookings (need a project associated w/ them) - whenever a booking is inserted, need to insert a Participates tuple
 insert into Takes_Booking (projectName, participantNumber, length, participantTestCondition)
 values (projectName_input, participantNumber_input, length_input, participantTestCondition_input);
+
+insert into Participates (sid, projectName, participantNumber, dateParticipated, startTime)
+values (sid_input, projectName_input, participantNumber_input, dateParticipated_input, startTime_input);
 
 -- insert into makes_booking - projName and partNumber should come from the query above ^^ lmid should be lmid of Lab Manager that ran the query above ^^
 insert into Makes_Booking (projectName, participantNumber, lmid)
