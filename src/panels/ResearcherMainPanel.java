@@ -80,6 +80,18 @@ public class ResearcherMainPanel extends JPanel {
 		add(comboBox);
 		
 		comboBoxOptions = new JComboBox<String>();
+		comboBoxOptions.addItem("All");
+		comboBoxOptions.addItem("Researcher");
+		comboBoxOptions.addItem("Lab Manager");
+		comboBoxOptions.addItem("PI");
+		
+		comboBoxOptions.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String actionString = (String)comboBoxOptions.getSelectedItem();
+				showTable(actionString, con);
+			}
+		});
+		
 		comboBoxOptions.setBounds(15, 460, 290, 30);
 		add(comboBoxOptions);
 		
@@ -127,10 +139,11 @@ public class ResearcherMainPanel extends JPanel {
 		switch (actionString) {
 			case "Display all labs":
 				scrollPane.setVisible(true);
+				comboBoxOptions.setVisible(false);
+				lblOptions.setVisible(false);
 				query = QueryBuilder.getAllLabs();
 				break;
 			case "Display all lab members":
-				setLabMemberOptions(con);
 				scrollPane.setVisible(true);
 				comboBoxOptions.setVisible(true);
 				lblOptions.setVisible(true);
@@ -138,8 +151,8 @@ public class ResearcherMainPanel extends JPanel {
 				break;
 			case "Display all projects":
 				scrollPane.setVisible(true);
-				//comboBoxOptions.setVisible(true);
-				//lblOptions.setVisible(true);
+				comboBoxOptions.setVisible(false);
+				lblOptions.setVisible(false);
 				query = QueryBuilder.getAllProjects();
 				break;
 			case "":
@@ -183,20 +196,5 @@ public class ResearcherMainPanel extends JPanel {
 		} catch (SQLException ex) {
 			System.out.println("Message: " + ex.getMessage());
 		}
-	}
-	
-	private void setLabMemberOptions(Connection con) {
-		comboBoxOptions.removeAllItems();
-		comboBoxOptions.addItem("All");
-		comboBoxOptions.addItem("Researcher");
-		comboBoxOptions.addItem("Lab Manager");
-		comboBoxOptions.addItem("PI");
-		
-		comboBoxOptions.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String actionString = (String)comboBoxOptions.getSelectedItem();
-				showTable(actionString, con);
-			}
-		});
 	}
 }
