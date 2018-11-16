@@ -6,7 +6,7 @@
 --     This is where we display all lab specific info (pi, researchers, projects, etc.)
 --     Clicking on a project will take user to the project info panel described in the collaborator sql file.
 
---     All queries from researcher.sql are available to lab manager too
+--     All queries from researcher.sql are available to PI too
 
 -- Select All Grants
 select *
