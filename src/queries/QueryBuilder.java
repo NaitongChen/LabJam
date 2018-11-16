@@ -33,4 +33,33 @@ public class QueryBuilder {
 				"where r.id = cl.id and r.id = '" + 
 				researcherID + "'";
 	}
+	
+	public static String getAllLabs() {
+		return "Select * from Lab order by field";
+	}
+	
+	public static String getAllLabMembers() {
+		return "Select * from Contains_LabMember order by education";
+	}
+
+	public static String getAllResearchers() {
+		return "Select * from Contains_LabMember cl, Researcher r where r.id = cl.id " +
+				"order by researchertype";
+	}
+
+	public static String getAllLabManagers() {
+		return "Select * from Contains_LabMember cl, LabManager lm where lm.id = cl.id " +
+				"order by employmenttype";
+	}
+
+	public static String getAllPIs() {
+		return "Select * from Contains_LabMember cl, PI pi where pi.id = cl.id " +
+				"order by fieldofexpertise";
+	}
+
+	public static String getAllProjects() {
+		return "select unique sw.projectName, pm.category, cl.name as PI " +
+				"from Supervises_WorksOn sw, Contains_LabMember cl, Project_MaterialType pm " +
+				"where sw.piid = cl.id and pm.name = sw.projectName";
+	}
 }
