@@ -30,9 +30,9 @@ set name = name_input
 where id = toBeChanged_id_input;
 
 -- Update LabMemner Set ID
-update Contains_LabMember
-set id = id_input
-where id = toBeChanged_id_input;
+--update Contains_LabMember
+--set id = id_input
+--where id = toBeChanged_id_input;
 
 -- Update LabMember Set education
 update Contains_LabMember
