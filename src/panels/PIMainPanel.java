@@ -27,7 +27,7 @@ public class PIMainPanel extends JPanel {
 		lblNewLabel.setBounds(219, 144, 69, 20);
 		add(lblNewLabel);
 		
-		JButton btnLogout = new JButton("Logout");
+		JButton btnLogout = new JButton("LogoutPI");
 		btnLogout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				QueryBuilder.reset();

@@ -27,4 +27,10 @@ public class QueryBuilder {
 		labManagerID = null;
 		PIID = null;
 	}
+	
+	public static String getResearcherName() {
+		return "Select name from Contains_LabMember cl, Researcher r " + 
+				"where r.id = cl.id and r.id = '" + 
+				researcherID + "'";
+	}
 }

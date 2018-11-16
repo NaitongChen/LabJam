@@ -27,7 +27,7 @@ public class LabManagerMainPanel extends JPanel {
 		lblNewLabel.setBounds(219, 144, 69, 20);
 		add(lblNewLabel);
 		
-		JButton btnLogout = new JButton("Logout");
+		JButton btnLogout = new JButton("LogoutLM");
 		btnLogout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				QueryBuilder.reset();

@@ -21,6 +21,7 @@ public class LogIn extends JPanel {
 	private JLabel IDlabel;
 	private String id;
 	private JButton LoginButton;
+	private int redirect = 0;
 
 	/**
 	 * Create the panel.
@@ -39,6 +40,7 @@ public class LogIn extends JPanel {
 				IDlabel.setVisible(true);
 				LoginButton.setVisible(true);
 				textField.setVisible(true);
+				redirect = Constant.RESEARCHERDIR;
 			}
 		});
 		btnResearcher.setBounds(15, 50, 130, 30);
@@ -51,6 +53,7 @@ public class LogIn extends JPanel {
 				IDlabel.setVisible(true);
 				LoginButton.setVisible(true);
 				textField.setVisible(true);
+				redirect = Constant.COLLABORATORDIR;
 			}
 		});
 		btnCollaborator.setBounds(305, 50, 130, 30);
@@ -63,6 +66,7 @@ public class LogIn extends JPanel {
 				IDlabel.setVisible(true);
 				LoginButton.setVisible(true);
 				textField.setVisible(true);
+				redirect = Constant.LABMANAGERDIR;
 			}
 		});
 		btnLabManager.setBounds(60, 105, 130, 30);
@@ -75,6 +79,7 @@ public class LogIn extends JPanel {
 				IDlabel.setVisible(true);
 				LoginButton.setVisible(true);
 				textField.setVisible(true);
+				redirect = Constant.PIDIR;
 			}
 		});
 		btnPi.setBounds(230, 105, 130, 30);
@@ -83,10 +88,8 @@ public class LogIn extends JPanel {
 		JButton btnDba = new JButton("DBA");
 		btnDba.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				IDlabel.setText("My DBA ID is:");
-				IDlabel.setVisible(true);
-				LoginButton.setVisible(true);
-				textField.setVisible(true);
+				redirect = Constant.PIDIR;
+				login(mainPanel, cl, con);
 			}
 		});
 		btnDba.setBounds(160, 50, 130, 30);
@@ -97,7 +100,7 @@ public class LogIn extends JPanel {
 		add(textField);
 		textField.setColumns(10);
 		
-		IDlabel = new JLabel("My ID is:");
+		IDlabel = new JLabel("My DBA ID is:");
 		IDlabel.setFont(new Font("Arial", Font.PLAIN, 20));
 		IDlabel.setBounds(60, 160, 300, 20);
 		add(IDlabel);
@@ -111,6 +114,15 @@ public class LogIn extends JPanel {
 		LoginButton.setBounds(230, 255, 130, 30);
 		add(LoginButton);
 		
+		JButton btnTab = new JButton("Tab1");
+		btnTab.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				cl.show(mainPanel, "1");
+			}
+		});
+		btnTab.setBounds(15, 256, 115, 29);
+		add(btnTab);
+		
 		
 		// set initial visibility
 		LoginButton.setVisible(false);
@@ -120,37 +132,36 @@ public class LogIn extends JPanel {
 	
 	private void login(JPanel mainPanel, CardLayout cl, Connection con) {
 		id = textField.getText();
-		switch (IDlabel.getText()) {
-		case "My Researcher ID is:":
-			QueryBuilder.setResearcherID(id);
-			ResearcherMainPanel researcherMainPanel = new ResearcherMainPanel(cl, mainPanel, con);
-			mainPanel.add(researcherMainPanel, Constant.RESEARCHERMAIN);
-			mainPanel.revalidate();
-			cl.show(mainPanel, Constant.RESEARCHERMAIN);
-		case "My PI ID is:":
-			QueryBuilder.setResearcherID(id);
-			PIMainPanel piMainPanel = new PIMainPanel(cl, mainPanel, con);
-			mainPanel.add(piMainPanel, Constant.PIMAIN);
-			mainPanel.revalidate();
-			cl.show(mainPanel, Constant.PIMAIN);
-		case "My Collaborator ID is:":
-			QueryBuilder.setResearcherID(id);
-			CollaboratorMainPanel collaboratorMainPanel = new CollaboratorMainPanel(cl, mainPanel, con);
-			mainPanel.add(collaboratorMainPanel, Constant.COLLABORATORMAIN);
-			mainPanel.revalidate();
-			cl.show(mainPanel, Constant.COLLABORATORMAIN);
-		case "My DBA ID is:":
-			QueryBuilder.setResearcherID(id);
-			DBAMainPanel dbaMainPanel = new DBAMainPanel(cl, mainPanel, con);
-			mainPanel.add(dbaMainPanel, Constant.DBAMAIN);
-			mainPanel.revalidate();
-			cl.show(mainPanel, Constant.DBAMAIN);
-		case "My Lab Manager ID is:":
-			QueryBuilder.setResearcherID(id);
-			LabManagerMainPanel labManagerMainPanel = new LabManagerMainPanel(cl, mainPanel, con);
-			mainPanel.add(labManagerMainPanel, Constant.LABMANAGERMAIN);
-			mainPanel.revalidate();
-			cl.show(mainPanel, Constant.LABMANAGERMAIN);
-		}
+		switch (redirect) {
+			case Constant.RESEARCHERDIR:
+				QueryBuilder.setResearcherID(id);
+				ResearcherMainPanel researcherMainPanel = new ResearcherMainPanel(cl, mainPanel, con);
+				mainPanel.add(researcherMainPanel, Constant.RESEARCHERMAIN);
+				cl.show(mainPanel, Constant.RESEARCHERMAIN);
+				break;
+			case Constant.PIDIR:
+				QueryBuilder.setPIID(id);
+				PIMainPanel piMainPanel = new PIMainPanel(cl, mainPanel, con);
+				mainPanel.add(piMainPanel, Constant.PIMAIN);
+				cl.show(mainPanel, Constant.PIMAIN);
+				break;
+			case Constant.COLLABORATORDIR:
+				QueryBuilder.setCollaboratorID(id);
+				CollaboratorMainPanel collaboratorMainPanel = new CollaboratorMainPanel(cl, mainPanel, con);
+				mainPanel.add(collaboratorMainPanel, Constant.COLLABORATORMAIN);
+				cl.show(mainPanel, Constant.COLLABORATORMAIN);
+				break;
+			case Constant.LABMANAGERDIR:
+				QueryBuilder.setLabManagerID(id);
+				LabManagerMainPanel labManagerMainPanel = new LabManagerMainPanel(cl, mainPanel, con);
+				mainPanel.add(labManagerMainPanel, Constant.LABMANAGERMAIN);
+				cl.show(mainPanel, Constant.LABMANAGERMAIN);
+				break;
+			case Constant.DBADIR:
+				DBAMainPanel dbaMainPanel = new DBAMainPanel(cl, mainPanel, con);
+				mainPanel.add(dbaMainPanel, Constant.DBAMAIN);
+				cl.show(mainPanel, Constant.DBAMAIN);
+				break;
+			}
 	}
 }
