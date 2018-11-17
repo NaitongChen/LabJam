@@ -4,6 +4,8 @@ import java.awt.CardLayout;
 import java.awt.Font;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -58,7 +60,7 @@ public class ResearcherMainPanel extends JPanel {
 		add(btnLogout);
 		
 		scrollPane = new JScrollPane();
-		scrollPane.setBounds(15, 120, 420, 300);
+		scrollPane.setBounds(15, 155, 420, 300);
 		add(scrollPane);
 		table = new JTable();
 		scrollPane.setViewportView(table);
@@ -69,29 +71,28 @@ public class ResearcherMainPanel extends JPanel {
 	    
 	    cellSelectionModel.addListSelectionListener(new ListSelectionListener() {
 	        public void valueChanged(ListSelectionEvent e) {
-		        if (((String)comboBox.getSelectedItem()).equals("Display all labs")) {	
-	        		String selectedData = null;
-			        int[] selectedRow = table.getSelectedRows();
-			        selectedData = (String) table.getValueAt(selectedRow[0], 0);
-			        QueryBuilder.setLabID(selectedData);
-			        LabProfilePanel labProfilePanel = new LabProfilePanel(cl, mainPanel, con);
-			        mainPanel.add(labProfilePanel, Constant.LAB);
-			        cl.show(mainPanel, Constant.LAB);
-		        } else if (((String)comboBox.getSelectedItem()).equals("Display all projects")) {
-		        	String selectedData = null;
-			        int[] selectedRow = table.getSelectedRows();
-			        selectedData = (String) table.getValueAt(selectedRow[0], 0);
-			        QueryBuilder.setProjectName(selectedData);
-			        ProjectProfilePanel projectProfilePanel = new ProjectProfilePanel(cl, mainPanel, con);
-			        mainPanel.add(projectProfilePanel, Constant.PROJECT);
-			        cl.show(mainPanel, Constant.PROJECT);
-		        }
+        		if (e.getValueIsAdjusting()) {
+		        	if (((String)comboBox.getSelectedItem()).equals("Display all labs")) {	
+		        		String selectedData = null;
+				        int[] selectedRow = table.getSelectedRows();
+				        selectedData = (String) table.getValueAt(selectedRow[0], 0);
+				        selectedData = selectedData.trim();
+				        QueryBuilder.setLabID(selectedData);
+				        LabProfilePanel labProfilePanel = new LabProfilePanel(cl, mainPanel, con, Constant.RESEARCHERMAIN);
+				        cl.show(mainPanel, Constant.LAB);
+			        } else if (((String)comboBox.getSelectedItem()).equals("Display all projects")) {
+			        	String selectedData = null;
+				        int[] selectedRow = table.getSelectedRows();
+				        selectedData = (String) table.getValueAt(selectedRow[0], 0);
+				        selectedData = selectedData.trim();
+				        QueryBuilder.setProjectName(selectedData);
+				        ProjectProfilePanel projectProfilePanel = new ProjectProfilePanel(cl, mainPanel, con, Constant.RESEARCHERMAIN);
+				        mainPanel.add(projectProfilePanel, Constant.PROJECT);
+				        cl.show(mainPanel, Constant.PROJECT);
+			        }
+        		}
 	        }
-	     });
-		
-		List<String> queryList = new ArrayList<String>();
-		queryList.add("Display all labs");
-		queryList.add("Display all lab members");
+	    });
 		
 		comboBox = new JComboBox<String>();
 		comboBox.addItem("");
@@ -105,7 +106,7 @@ public class ResearcherMainPanel extends JPanel {
 				showTable(action, con);
 			}
 		});
-		comboBox.setBounds(15, 85, 290, 30);
+		comboBox.setBounds(15, 120, 290, 30);
 		add(comboBox);
 		
 		comboBoxOptions = new JComboBox<String>();
@@ -121,7 +122,7 @@ public class ResearcherMainPanel extends JPanel {
 			}
 		});
 		
-		comboBoxOptions.setBounds(15, 460, 290, 30);
+		comboBoxOptions.setBounds(15, 495, 290, 30);
 		add(comboBoxOptions);
 		
 		JLabel lblSelectAnOperation = new JLabel("Select an operation...");
@@ -129,9 +130,15 @@ public class ResearcherMainPanel extends JPanel {
 		lblSelectAnOperation.setBounds(15, 50, 290, 30);
 		add(lblSelectAnOperation);
 		
+		JLabel hours = new JLabel("hours");
+		hours.setText("Weekly Hours Allocated: " + getWeeklyHours(con));
+		hours.setFont(new Font("Arial", Font.PLAIN, 20));
+		hours.setBounds(15, 85, 290, 30);
+		add(hours);
+		
 		lblOptions = new JLabel("Options");
 		lblOptions.setFont(new Font("Arial", Font.PLAIN, 20));
-		lblOptions.setBounds(15, 425, 69, 30);
+		lblOptions.setBounds(15, 460, 69, 30);
 		add(lblOptions);
 		
 		scrollPane.setVisible(false);
@@ -139,6 +146,27 @@ public class ResearcherMainPanel extends JPanel {
 		lblOptions.setVisible(false);
 	}
 	
+	private int getWeeklyHours(Connection con) {
+		Statement  stmt;
+		ResultSet  rs = null;
+		String query;
+		int name = 0;
+		
+		try{
+			stmt = con.createStatement();
+			query = QueryBuilder.calculateWeeklyHours();
+			rs = stmt.executeQuery(query);
+			rs.next();
+			name = rs.getInt("total");
+			stmt.close();
+			
+		} catch (SQLException ex) {
+			System.out.println("Message: " + ex.getMessage());
+		}
+		
+		return name;
+	}
+
 	private String getResearcherName(Connection con) {
 		Statement  stmt;
 		ResultSet  rs = null;

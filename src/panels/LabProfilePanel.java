@@ -12,7 +12,7 @@ public class LabProfilePanel extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public LabProfilePanel(CardLayout cl, JPanel mainPanel, Connection con) {
+	public LabProfilePanel(CardLayout cl, JPanel mainPanel, Connection con, String from) {
 		System.out.println(QueryBuilder.labID);
 	}
 
