@@ -4,6 +4,8 @@ public class QueryBuilder {
 	public static String researcherID;
 	public static String labManagerID;
 	public static String PIID;
+	public static String labID;
+	public static String projectName;
 	
 	public static void setCollaboratorID(String cID) {
 		collaboratorID = cID;
@@ -19,6 +21,14 @@ public class QueryBuilder {
 	
 	public static void setPIID(String piID) {
 		PIID = piID;
+	}
+	
+	public static void setLabID(String lID) {
+		labID = lID;
+	}
+	
+	public static void setProjectName(String pName) {
+		projectName = pName;
 	}
 	
 	public static void reset() {

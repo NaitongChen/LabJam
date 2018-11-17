@@ -12,4 +12,6 @@ public class Constant {
 	public static final int LABMANAGERDIR = 3;
 	public static final String DBAMAIN = "dbaMain";
 	public static final int DBADIR = 4;
+	public static final String PROJECT = "project";
+	public static final String LAB = "lab";
 }

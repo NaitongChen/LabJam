@@ -14,6 +14,9 @@ import java.util.List;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 import net.proteanit.sql.DbUtils;
 import queries.QueryBuilder;
@@ -59,6 +62,32 @@ public class ResearcherMainPanel extends JPanel {
 		add(scrollPane);
 		table = new JTable();
 		scrollPane.setViewportView(table);
+		
+		table.setRowSelectionAllowed(true);
+		ListSelectionModel cellSelectionModel = table.getSelectionModel();
+	    cellSelectionModel.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+	    
+	    cellSelectionModel.addListSelectionListener(new ListSelectionListener() {
+	        public void valueChanged(ListSelectionEvent e) {
+		        if (((String)comboBox.getSelectedItem()).equals("Display all labs")) {	
+	        		String selectedData = null;
+			        int[] selectedRow = table.getSelectedRows();
+			        selectedData = (String) table.getValueAt(selectedRow[0], 0);
+			        QueryBuilder.setLabID(selectedData);
+			        LabProfilePanel labProfilePanel = new LabProfilePanel(cl, mainPanel, con);
+			        mainPanel.add(labProfilePanel, Constant.LAB);
+			        cl.show(mainPanel, Constant.LAB);
+		        } else if (((String)comboBox.getSelectedItem()).equals("Display all projects")) {
+		        	String selectedData = null;
+			        int[] selectedRow = table.getSelectedRows();
+			        selectedData = (String) table.getValueAt(selectedRow[0], 0);
+			        QueryBuilder.setProjectName(selectedData);
+			        ProjectProfilePanel projectProfilePanel = new ProjectProfilePanel(cl, mainPanel, con);
+			        mainPanel.add(projectProfilePanel, Constant.PROJECT);
+			        cl.show(mainPanel, Constant.PROJECT);
+		        }
+	        }
+	     });
 		
 		List<String> queryList = new ArrayList<String>();
 		queryList.add("Display all labs");
