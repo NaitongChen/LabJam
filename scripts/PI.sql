@@ -31,6 +31,11 @@ select *
 from Applies_OpenGrant_Date
 where status = "applied";
 
+-- see all collaborators
+select * 
+from Assigned_Collaborators;
+
+
 -- Input is piid
 -- select all grant in the PI's lab
 --select fag.name,fag.amount,fag.projectName
@@ -67,6 +72,5 @@ values (name_input,amout_input,projectName_input);
 
 -- insert into Project_MaterialType
 -- creating a new project
-
 insert into Project_MaterialType(name,category,materialType)
 values (name_input,category_input,materialType_input);
