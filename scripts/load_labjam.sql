@@ -18,6 +18,16 @@ insert into lab values
 ('0009','Djokovic','Political Science');
 insert into lab values
 ('0010','Wang','Microbiology');
+insert into lab values
+('0011','Jonas','Computer Science');
+insert into lab values
+('0012','Misha','Statistics');
+insert into lab values
+('0013','Marbel','Biology');
+insert into lab values
+('0014','Trauma','Physics');
+insert into lab values
+('0015','Wong','Microbiology');
 
 
 insert into Contains_LabMember values
@@ -29,7 +39,12 @@ insert into Contains_LabMember values
 insert into Contains_LabMember values
 ('1114','0001','Pat Weasley','Accounting','7789981237');
 insert into Contains_LabMember values
-('1115','0001','Severus Shape','Zoology','7789981238');
+('1115','0001','Severus Shape','Accounting','7789981243');
+insert into Contains_LabMember values
+('1115','0001','Matchie Patchie','Genetics','7789981232');
+insert into Contains_LabMember values
+('1115','0001','Avey Choo','Zoology','7789981299');
+
 insert into LabManager values
 ('1114','full time');
 insert into PI values
@@ -37,13 +52,33 @@ insert into PI values
 insert into Researcher values
 ('1111','Field');
 insert into Researcher values
-('1112','Field');
+('1112','full time');
 insert into Researcher values
-('1113','Field');
+('1113','full time');
+insert into Researcher values
+('1116','Field');
+insert into Researcher values
+('1117','full time');
+insert into Researcher values
+('1118','part time');
+
 insert into Project_MaterialType values
 ('Save The Hippogriffs','Genetics','Illumina EPIC Array');
 insert into Project_MaterialType values
 ('Murtlap','Zoology','Compound Microscope');
+insert into Project_MaterialType values
+('Inheritance of IQ','Genetics','Computing tool');
+insert into Project_MaterialType values
+('GPU Parallelization','Computer Science','Computing tool');
+insert into Project_MaterialType values
+('Adverserial Attacks','Computer Science','Compound Microscope');
+insert into Project_MaterialType values
+('Cellular funeral','Microbiology','Computing tool');
+insert into Project_MaterialType values
+('Graph embedding','Computer Science','Computing tool');
+
+
+
 insert into Supervises_WorksOn values
 ('Save The Hippogriffs','1111','1115','lead researcher');
 insert into Supervises_WorksOn values
@@ -54,6 +89,28 @@ insert into Supervises_WorksOn values
 ('Murtlap','1112','1115','lead researcher');
 insert into Supervises_WorksOn values
 ('Murtlap','1113','1115','assisting researcher');
+insert into Supervises_WorksOn values
+('Save The Hippogriffs','1116','1115','lead researcher');
+insert into Supervises_WorksOn values
+('Cellular funeral','1117','1115','lead researcher');
+insert into Supervises_WorksOn values
+('Cellular funeral','1118','1115','lead researcher');
+insert into Supervises_WorksOn values
+('Murtlap','1112','1115','lead researcher');
+insert into Supervises_WorksOn values
+('Murtlap','1113','1115','assisting researcher');
+insert into Supervises_WorksOn values
+('Save The Hippogriffs','1116','1115','lead researcher');
+insert into Supervises_WorksOn values
+('Graph embedding','1117','1115','lead researcher');
+insert into Supervises_WorksOn values
+('Graph embedding','1118','1115','lead researcher');
+
+
+
+
+
+
 insert into Role_WeeklyHoursAllocated values
 ('lead researcher',30);
 insert into Role_WeeklyHoursAllocated values
@@ -91,6 +148,15 @@ insert into Contains_LabMember values
 ('1124','0002','John Smith','English','7789981242');
 insert into Contains_LabMember values
 ('1125','0002','Charity Burbage','Psychology','7789981243');
+insert into Contains_LabMember values
+('1126','0002','Charity Kool','Computer Science','7789981244');
+insert into Contains_LabMember values
+('1127','0002','Charity Macy','Economics','7789981245');
+insert into Contains_LabMember values
+('1128','0002','Charity Up','Psychology','7789981246');
+insert into Contains_LabMember values
+('1129','0002','Charity Dam','Psychology','7789981249');
+
 insert into LabManager values
 ('1124','full time');
 insert into PI values
