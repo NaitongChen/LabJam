@@ -16,6 +16,8 @@ where status = 'approved'
 insert into Fund_ApprovedGrant(name,amount,projectName)
 values (name_input,amout_input,projectName_input);
 
+-- Insert & delete and from fund grant
+
 -- Delete from Applies_Open_Grants 
 delete from Applies_OpenGrant_Date
 where name = name_input and amount = amout_input;
