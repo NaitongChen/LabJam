@@ -8,26 +8,26 @@
 
 --     All queries from researcher.sql are available to lab manager too
 
--- see all open grants
+-- see all open grants  - DONE
 select *
 from Applies_OpenGrant_Date;
 
--- see open grants that have been approved (but still open)
+-- see open grants that have been approved (but still open) - DONE
 select * 
 from Applies_OpenGrant_Date
 where status = "approved";
 
--- see open grants that have been declined
+-- see open grants that have been rejected - DONE
 select * 
 from Applies_OpenGrant_Date
-where status = "declined";
+where status = "rejected";
 
--- see open grants that have been applied to
+-- see open grants that have been applied to - DONE
 select * 
 from Applies_OpenGrant_Date
 where status = "applied";
 
--- see all grants for a given project
+-- see all grants for a given project - DONE
 select * 
 from Fund_ApprovedGrant
 where projectName = projectName_input;
