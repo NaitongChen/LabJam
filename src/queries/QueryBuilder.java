@@ -43,6 +43,12 @@ public class QueryBuilder {
 				"where r.id = cl.id and r.id = '" + 
 				researcherID + "'";
 	}
+
+	public static String getCollaboratorName() {
+		return "Select name from Assigned_Collaborators_Id cl " +
+				"where cl.id = '" +
+				collaboratorID + "'";
+	}
 	
 	public static String getAllLabs() {
 		return "Select * from Lab order by field";
@@ -71,5 +77,12 @@ public class QueryBuilder {
 		return "select unique sw.projectName, pm.category, cl.name as PI " +
 				"from Supervises_WorksOn sw, Contains_LabMember cl, Project_MaterialType pm " +
 				"where sw.piid = cl.id and pm.name = sw.projectName";
+	}
+
+	public static String getCollaboratorProjects() {
+		return "Select projectName " +
+				"from Assigned_Collaborators_Id aci, Name_Education_ProjectName nep " +
+				"where aci.name = nep.name and aci.id ='" + 
+				collaboratorID + "'";
 	}
 }
