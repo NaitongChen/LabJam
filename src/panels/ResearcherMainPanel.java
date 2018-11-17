@@ -147,6 +147,7 @@ public class ResearcherMainPanel extends JPanel {
 				scrollPane.setVisible(true);
 				comboBoxOptions.setVisible(true);
 				lblOptions.setVisible(true);
+				comboBoxOptions.setSelectedItem("All");
 				query = QueryBuilder.getAllLabMembers();
 				break;
 			case "Display all projects":
