@@ -174,3 +174,14 @@ BEGIN
 	WHERE fa.projectName = pm.name;
 END;
 )
+
+CREATE VIEW ProjectName_Funding AS
+Select f.projectName, cast(SUM(amount) as float) as total 
+From Fund_ApprovedGrant f
+Group by f.projectName;
+						 
+CREATE VIEW ProjectName_MaterialPrice AS
+Select pm.name, mm.materialPrice 
+From Project_MaterialType pm, MaterialType_MaterialPrice mm 
+Where pm.name = f.projectName and pm.materialType = mm.materialType 
+Group by pm.name;
