@@ -53,13 +53,13 @@ CREATE TABLE Date_Name_Lmid (
 CREATE TABLE Fund_ApprovedGrant (
 	name CHAR(20),
 	amount FLOAT,
-	projectName CHAR(20),
+	projectName CHAR(40),
 	CHECK (amount > 0),
 	PRIMARY KEY (name, amount),
 	FOREIGN KEY (projectName) REFERENCES Project_MaterialType(name));
 
 CREATE TABLE Supervises_WorksOn (
-	projectName CHAR(20),
+	projectName CHAR(40),
 	rid CHAR(4),
 	piid CHAR(4) NOT NULL,
 	role CHAR(20),
@@ -78,7 +78,7 @@ CREATE TABLE Assigned_Collaborators_Id (
 	education CHAR(4));
 
 CREATE TABLE Name_Education_ProjectName (
-	name CHAR(20),
+	name CHAR(40),
 	education CHAR(4),
 	projectName CHAR(20) NOT NULL,
 	PRIMARY KEY (name, education),
@@ -90,7 +90,7 @@ CREATE TABLE Subject (
 	availability char(1) CHECK (availability IN ( 'Y', 'N' )));
 
 CREATE TABLE Takes_Booking (
-	projectName CHAR(20) NOT NULL,
+	projectName CHAR(40) NOT NULL,
 	participantNumber INTEGER,
 	length INTEGER,
 	participantTestCondition CHAR(10),
@@ -99,7 +99,7 @@ CREATE TABLE Takes_Booking (
 
 CREATE TABLE Participates (
 	sid CHAR(4),
-	projectName CHAR(20),	
+	projectName CHAR(40),	
 	participantNumber INTEGER,
 	dateParticipated DATE,
 	startTime INTEGER,
@@ -108,7 +108,7 @@ CREATE TABLE Participates (
 	FOREIGN KEY (projectName, participantNumber) REFERENCES Takes_Booking(projectName, participantNumber));
 
 CREATE TABLE Makes_Booking (
-	projectName CHAR(20),
+	projectName CHAR(40),
 	participantNumber INTEGER,
 	lmid CHAR(4) NOT NULL,
 	PRIMARY KEY (projectName, participantNumber),
