@@ -49,9 +49,10 @@ from Fund_ApprovedGrant
 where projectName = projectName_input;
 
 -- Update Project Set projectName
-Update Project_MaterialType
-set name = new_projectName_input
-where name = toBeChanged_projectName_input;
+-- not doing this, since it is also FK for other tables
+--Update Project_MaterialType
+--set name = new_projectName_input
+--where name = toBeChanged_projectName_input;
 
 -- Select category from Project
 select category
