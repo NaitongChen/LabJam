@@ -245,15 +245,15 @@ public class QueryBuilder {
 	}
 
 	public static String getAvailableSubjects(String projectName_input, Date dateParticipated_input, Integer startTime_input, Integer length_input) {
-		return "select * from Subjects s" +
-		"where availability = 'Y' AND s.id NOT IN " +
-		getOverLapSubjects(projectName_input, dateParticipated_input, startTime_input); //+
-		// " AND ( " + startTime_input + " + " length_input + " ) <= 1800";
+		return "select * from Subject s " +
+		"where availability = 'Y' AND s.id NOT IN (" +
+		getOverLapSubjects(projectName_input, dateParticipated_input, startTime_input)
+		+ ")"; 
 		
 	}
 	public static String getOverLapSubjects(String projectName_input, Date dateParticipated_input, Integer startTime_input) {
-		return "select p.id from Participates p, Takes_Booking b" +
+		return "select p.sid from Participates p, Takes_Booking b " +
 		"where b.projectName = '" + projectName_input + "' AND p.dateParticipated = " +
-		dateParticipated_input + " AND (" + startTime_input + " <= p.startTime <= (" + startTime_input + "+ b.length))";
+		dateParticipated_input + " AND (" + startTime_input + " <= p.startTime AND p.startTime <= (" + startTime_input + "+ b.length))";
 	}
 }

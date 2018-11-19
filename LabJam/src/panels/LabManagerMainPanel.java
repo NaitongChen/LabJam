@@ -1031,7 +1031,7 @@ public class LabManagerMainPanel extends JPanel {
 				subname_field.setVisible(false);
 				sid_field.setVisible(false);
 				btnInsertCollaborators.setVisible(false);
-				cid_field.setVisible(true);
+				cid_field.setVisible(false);
 				collabname_field.setVisible(false);
 				collabedu_field.setVisible(false);
 				lblAvailability.setVisible(false);
@@ -1118,8 +1118,9 @@ public class LabManagerMainPanel extends JPanel {
 					ZonedDateTime zdt = ZonedDateTime.ofInstant (instant , zoneId);
 					LocalDate partDate_localDate = zdt.toLocalDate();
 					java.sql.Date partDate_dateSQL = java.sql.Date.valueOf(partDate_localDate);
+					System.out.println(partDate_dateSQL);
 					if ((partDate_dateSQL != null) && (startTime_int != null) && (length_int != null) && !projectName.isEmpty()) {
-						query = QueryBuilder.getAvailableSubjects(projectName, partDate_dateSQL, startTime_int, length_int);
+						query = QueryBuilder.getAvailableSubjects(projectName.trim(), partDate_dateSQL, startTime_int, length_int);
 					}
 				} catch (ParseException ex) {
 					System.out.println("Message: " + ex.getMessage());
