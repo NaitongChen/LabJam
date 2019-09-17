@@ -1,0 +1,1 @@
+INDEX VERSION 1.131+C:\2018W1\CPSC304\LabJam\LabJam\.metadata\.plugins\org.eclipse.jdt.core
