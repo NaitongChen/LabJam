@@ -9,31 +9,37 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
-import panels.Tab1;
-import panels.Tab2;
+import panels.CollaboratorMainPanel;
+import panels.Constant;
+import panels.LogIn;
+import panels.ResearcherMainPanel;
 
 public class LabJam {
-	JFrame frame = new JFrame("LabJAM");
-	JPanel mainPanel = new JPanel();
-	JPanel panel2 = new JPanel();
-	JButton button2 = new JButton("switch to 1");
-	CardLayout cl = new CardLayout();
+	JFrame frame;
+	JPanel mainPanel;
+	JButton button2;
+	CardLayout cl;
 	Connection con;
 	
 	public LabJam() {
+		
+		frame = new JFrame("LabJAM");
+		mainPanel = new JPanel();
+		button2 = new JButton("switch to 1");
+		cl = new CardLayout();
 		connect("ora_q7l0b", "a21539151");
 		mainPanel.setLayout(cl);
-		Tab1 tab1 = new Tab1(cl, mainPanel, con);
-		Tab2 tab2 = new Tab2(cl, mainPanel, con);
+		LogIn login = new LogIn(cl, mainPanel,con);
 
-		mainPanel.add(tab1, "1");
-		mainPanel.add(tab2, "2");
+		mainPanel.add(login, Constant.LOGIN);
 		
 		frame.add(mainPanel);
-		frame.setPreferredSize(new Dimension(400, 400));
+		frame.setPreferredSize(new Dimension(450, 600));
+		frame.setResizable(false);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.pack();
 		frame.setVisible(true);
+		cl.show(mainPanel, Constant.LOGIN);
 	}
 	
 	public static void main(String[] args) {
